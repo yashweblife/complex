@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/styles/prism.css" rel="stylesheet" />
+    <title>Complex | Canvas</title>
+  </head>
+  <body>
+    <header>
+      <h2>Complex | Canvas</h2>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero">
+      <p>
+        Canvas is one of the most amazing tools HTML offers. It's a place where
+        you can paint custom graphics
+      </p>
+      <h4>Create it Programmatically</h4>
+      <pre>
+            <code class="language-javascript">
+                const canvas = document.createElement('canvas');
+                document.body.appendChild(canvas);
+            </code>
+        </pre>
+      <h4>Fetch it from the DOM</h4>
+      <br />HTML<br />
+      <p>Place a canvas tag in your HTML file</p>
+      <pre>
+            <code class="language-html">
+                &lt;canvas&gt;&lt;/canvas&gt;
+            </code>
+        </pre>
+      <br />Javascript<br />
+      <p>Fetch the canvas from the DOM</p>
+      <pre>
+            <code class="language-javascript">
+                const canvas = document.querySelector('canvas');
+            </code>
+        </pre>
+      <h4>Time to Draw</h4>
+      <p>
+        The HTML Canvas <b>allows</b> us to use either
+        <b>2d context or 3d context</b> via <b>webgl</b>. Meaning, You can draw
+        standard 2D shapes with the 2D context selected or curate a 3D world
+        with WebGL.
+      </p>
+      <h4>Getting Context</h4>
+      <pre>
+            <code class="language-javascript">
+                const canvas = document.querySelector('canvas');
+                const c = canvas.getContext('2d');
+            </code>
+      </pre>
+      <p>We can use <b>c</b> to draw stuff, so lets draw stuff...</p>
+      <h4>Circle</h4>
+      <canvas id="canvas-1" style="background-color: white;"></canvas>
+        <pre>
+            <code class="language-javascript">
+                const canvas = document.querySelector('canvas');
+                const c = canvas.getContext('2d');
+                c.beginPath();
+                c.arc(100, 100, 30, 0, Math.PI * 2, false);
+                c.fill();
+            </code>
+        </pre>
+        <br>
+        Explaination
+        <br>
+        <p>
+            <blockquote>beginPath()</blockquote> is used to start a new path. It's like putting the pen on the paper.
+            <br>
+            <pre>
+                <code class="language-javascript">
+                    arc(x_position, y_position, radius, start_angle, end_angle, clockwise_anticlockwise)
+                </code>
+            </pre>
+            <br>
+            <blockquote>fill()</blockquote> is used to fill the path with color.
+        </p>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+    <script src="./src/pages/canvas.ts" type="module"></script>
+  </body>
+</html>

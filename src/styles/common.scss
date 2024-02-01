@@ -5,9 +5,43 @@
     box-sizing: border-box;
 }
 
-
-//create media query for dark mode
-
+body>header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #121314;
+    >h1,h2,h3{
+        padding-top:1em;
+    }
+    nav{
+        display: flex;
+        width: 100%;
+        padding:1em 0;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            li{
+                text-decoration: none;
+                list-style: none;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 1em;
+                    &:hover{
+                        color: #f1f1f1;
+                    }
+                }
+            }
+        }
+    }
+}
+blockquote{
+    background-color: rgb(32,32,32);
+    color:white;
+    padding:1em;
+    margin:1em 0;
+}
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #101010;
