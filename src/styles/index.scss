@@ -45,3 +45,20 @@ section.hero{
         }
     }
 }
+
+//media for desktop apps
+@media (min-width: 768px){
+    section.hero{
+        >h2{
+            padding: 2em;
+        }
+        .card-holder{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .card{
+            width: 30%;
+            margin:1em;
+        }
+    }
+}

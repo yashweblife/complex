@@ -42,6 +42,55 @@ blockquote{
     padding:1em;
     margin:1em 0;
 }
+.round{
+    border-radius: 0.5em;
+}
+.round1{
+    border-radius: 1em;
+}
+.round2{
+    border-radius: 50%;
+}
+.shadow1{
+    box-shadow: 0 0 1em 0 rgba(200,200,200,0.5);
+}
+.shadow2{
+    box-shadow: 0 0 1em 0 rgba(20, 20, 20, 0.5);
+}
+.w1{
+    width:10%;
+}
+.w2{
+    width:20%;
+}
+.w3{
+    width:30%;
+}
+.w4{
+    width:40%;
+}
+.w5{
+    width:50%;
+}
+.w6{
+    width:60%;
+}
+.w7{
+    width:70%;
+}
+.w8{
+    width:80%;
+}
+.w9{
+    width:90%;
+}
+.w10{
+    width:100%;
+}
+
+.box{
+    aspect-ratio: 1/1;
+}
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #101010;

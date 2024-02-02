@@ -6,3 +6,28 @@
         }
     }
 }
+
+//media for desktop apps
+@media (min-width: 768px){
+    .hero{
+        padding:2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:50%;
+        h4{
+            font-size: 1.5em;
+            padding:1em 0;
+            text-align: left;
+            width:100%;
+            color:#38f0c2;
+        }
+        pre,p{
+            width:100%;
+        }
+        canvas{
+            box-shadow: 0 0 1em 0 rgba(200,200,200,0.5);
+            margin:1em;
+        }
+    }
+}
