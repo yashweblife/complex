@@ -63,3 +63,54 @@ function fallingBalls(){
     }
     animate();
 }fallingBalls();
+
+
+function displayFallingBalls(){
+    //Get Canvas from DOM
+    const canvas = document.querySelector('#canvas-3') as HTMLCanvasElement;
+    const c = canvas.getContext('2d') as CanvasRenderingContext2D;
+    canvas.height = canvas.width
+    const {width, height} = canvas;
+    //Create a ball object
+    const ball = {
+        pos:{
+            x:width/2,
+            y:height/2
+        },
+        vel:{
+            x:0,
+            y:0
+        },
+        acc:{
+            x:0,
+            y:0
+        },
+        radius:10,
+        color:'red',
+    }
+    const gravity = 0.5;
+    //Create an animation loop
+    function animate(){
+        //Clear the canvas
+        c.clearRect(0, 0, width, height);
+        console.log("")
+        //Update the ball's position
+        ball.vel.x += ball.acc.x;
+        ball.vel.y += ball.acc.y;
+        ball.pos.x += ball.vel.x;
+        ball.pos.y += ball.vel.y;
+
+        //Apply gravity as an acceleration
+        ball.acc.y = gravity;
+
+        //Draw the ball
+        c.arc(ball.pos.x, ball.pos.y, ball.radius, 0, Math.PI * 2, false);
+        c.fillStyle = ball.color;
+        c.fill();
+
+        //Request the next frame
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+}displayFallingBalls();
