@@ -2,6 +2,14 @@ import "../styles/common.scss"
 import "../styles/canvas.scss"
 import { Vector } from "../lib";
 
+import { Dashboard } from "../components/Dashboard/Dashboard";
+
+const dashboard1 = new Dashboard({
+    header_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-header-tab${i}`) as HTMLElement),
+    preview_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-preview-tab${i}`) as HTMLElement),
+    control_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-controls-tab${i}`) as HTMLElement),
+})
+
 function drawArc(){
     const canvas = document.querySelector('#canvas-1') as HTMLCanvasElement;
     canvas.width=300;
