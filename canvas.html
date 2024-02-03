@@ -126,9 +126,58 @@
         <br>
         <h2>Learning by Example</h2>
         <div class="dashboard">
-          <div class="header"></div>
-          <div class="preview"></div>
-          <div class="controls"></div>          
+          <div class="header">
+            <div class="tab selected" id="dashboard-header-tab1">
+              Falling Balls
+            </div>
+            <div class="tab" id="dashboard-header-tab2">
+              Brownian Motion
+            </div>
+            <div class="tab" id="dashboard-header-tab3">
+              Attraction
+            </div>
+          </div>
+          <div class="content">
+            <div class="preview">
+              <div id="dashboard-preview-tab1" class=""><canvas id="canvas-3"></canvas></div>
+              <div id="dashboard-preview-tab2" class="dis-off"><canvas id="canvas-4"></canvas></div>
+              <div id="dashboard-preview-tab3" class="dis-off"><canvas id="canvas-5"></canvas></div>
+            </div>
+            <div class="controls">
+              <div id="dashboard-controls-tab1">
+                <pre><code class="language-javascript">
+                  const canvas = document.querySelector('canvas');
+                  const c = canvas.getContext('2d');
+                  const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+                  
+                  function randomIntFromRange(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1) + min);
+                  }
+                  
+                  function randomColor(colors) {
+                    return colors[Math.floor(Math.random() * colors.length)];
+                  }
+
+                </code></pre>
+              </div>
+              <div id="dashboard-controls-tab2" class="dis-off">
+                <pre><code class="language-javascript">
+                  const canvas = document.querySelector('canvas');
+                  const c = canvas.getContext('2d');
+                  const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+
+                </code></pre>
+              </div>
+              <div id="dashboard-controls-tab3" class="dis-off">
+                <pre><code class="language-javascript">
+                  const canvas = document.querySelector('canvas');
+                  const c = canvas.getContext('2d');
+                  const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+                  const balls = [];
+                </code></pre>
+              </div>
+            </div>          
+          </div>
         </div>
     </section>
     
