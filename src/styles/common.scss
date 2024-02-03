@@ -1,151 +1,201 @@
-*{
-    font-family: Arial, Helvetica, sans-serif;
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body>header{
+body > header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #121314;
+  > h1,
+  h2,
+  h3 {
+    padding-top: 1em;
+  }
+  nav {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #121314;
-    >h1,h2,h3{
-        padding-top:1em;
+    width: 100%;
+    padding: 1em 0;
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      li {
+        text-decoration: none;
+        list-style: none;
+        a {
+          text-decoration: none;
+          color: #fff;
+          padding: 1em;
+          &:hover {
+            color: #f1f1f1;
+          }
+        }
+      }
     }
-    nav{
-        display: flex;
+  }
+}
+blockquote {
+  background-color: rgb(32, 32, 32);
+  color: white;
+  padding: 1em;
+  margin: 1em 0;
+}
+.round {
+  border-radius: 0.5em;
+}
+.round1 {
+  border-radius: 1em;
+}
+.round2 {
+  border-radius: 50%;
+}
+.shadow1 {
+  box-shadow: 0 0 1em 0 rgba(200, 200, 200, 0.5);
+}
+.shadow2 {
+  box-shadow: 0 0 1em 0 rgba(20, 20, 20, 0.5);
+}
+.w1 {
+  width: 10%;
+}
+.w2 {
+  width: 20%;
+}
+.w3 {
+  width: 30%;
+}
+.w4 {
+  width: 40%;
+}
+.w5 {
+  width: 50%;
+}
+.w6 {
+  width: 60%;
+}
+.w7 {
+  width: 70%;
+}
+.w8 {
+  width: 80%;
+}
+.w9 {
+  width: 90%;
+}
+.w10 {
+  width: 100%;
+}
+.box {
+  aspect-ratio: 1/1;
+}
+.dis-off {
+  display: none !important;
+}
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .header {
+    display: flex;
+    > .tab {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 15ch;
+      padding: 1em;
+      border-top-right-radius: 0.5em;
+      border-top-left-radius: 0.5em;
+      font-size: 0.8em;
+      background-color: #121314;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      &:hover {
+        background-color: #1f1f1f;
+      }
+      &.selected {
+        background-color: #f0b038;
+      }
+    }
+  }
+  > .content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+	max-height: 400px;
+	overflow-y: hidden;
+    > .preview {
+      canvas {
         width: 100%;
-        padding:1em 0;
-        ul{
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            li{
-                text-decoration: none;
-                list-style: none;
-                a{
-                    text-decoration: none;
-                    color: #fff;
-                    padding: 1em;
-                    &:hover{
-                        color: #f1f1f1;
-                    }
-                }
-            }
-        }
+        aspect-ratio: 1/1;
+      }
     }
-}
-blockquote{
-    background-color: rgb(32,32,32);
-    color:white;
-    padding:1em;
-    margin:1em 0;
-}
-.round{
-    border-radius: 0.5em;
-}
-.round1{
-    border-radius: 1em;
-}
-.round2{
-    border-radius: 50%;
-}
-.shadow1{
-    box-shadow: 0 0 1em 0 rgba(200,200,200,0.5);
-}
-.shadow2{
-    box-shadow: 0 0 1em 0 rgba(20, 20, 20, 0.5);
-}
-.w1{
-    width:10%;
-}
-.w2{
-    width:20%;
-}
-.w3{
-    width:30%;
-}
-.w4{
-    width:40%;
-}
-.w5{
-    width:50%;
-}
-.w6{
-    width:60%;
-}
-.w7{
-    width:70%;
-}
-.w8{
-    width:80%;
-}
-.w9{
-    width:90%;
-}
-.w10{
-    width:100%;
-}
-.box{
-    aspect-ratio: 1/1;
-}
-.dis-off{
-    display: none !important;
-}
-.dashboard{
-    width:100%;
-    .header{
-        display: flex;
-        >.tab{
-            width:100%;
-            white-space: nowrap;
-            overflow: hidden;
-            max-width: 15ch;
-            padding:1em;
-            border-top-right-radius: 0.5em;
-            border-top-left-radius: 0.5em;
-            font-size: 0.8em;
-            background-color: #121314;
-            text-overflow: ellipsis;
-            cursor: pointer;
-            &:hover{
-                background-color: #1f1f1f;
-            }
-            &.selected{
-                background-color: #f0b038;
-            }
-        }
-    }
-    .content{
-        display: grid;
-        grid-template-columns: 8fr 1fr;
-        .preview{
-            background-color: #121314;
-            canvas{
-               width:500px;
-               aspect-ratio: 1/1;
-               margin:0;
-               box-shadow: none;
-               background-color: #111111;
-            }
-        }
-        .controls{
-            >div{
-                height:100%;
-            }
-            pre{
-                height: 100%;
-                code{
-                    height:100%;
-                }
-            }
-        }
-    }
+	.control{
+		max-height: 400px;
+		overflow-y: hidden;
+		>pre{
+		}
+	}
+  }
 }
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #101010;
-        color: #fff;
+  body {
+    background-color: #101010;
+    color: #fff;
+  }
+}
+@media (min-width: 768px) {
+  .dashboard {
+    width: 100%;
+    .header {
+      display: flex;
+      > .tab {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 15ch;
+        padding: 1em;
+        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5em;
+        font-size: 0.8em;
+        background-color: #121314;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        &:hover {
+          background-color: #1f1f1f;
+        }
+        &.selected {
+          background-color: #f0b038;
+        }
+      }
     }
+    .content {
+      display: grid;
+      grid-template-columns: 8fr 1fr;
+      .preview {
+        background-color: #121314;
+        canvas {
+          width: 500px;
+          aspect-ratio: 1/1;
+          margin: 0;
+          box-shadow: none;
+          background-color: rgb(255, 255, 255);
+        }
+      }
+      .controls {
+        > div {
+          height: 100%;
+        }
+        pre {
+          height: 100%;
+          code {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
 }
