@@ -146,18 +146,52 @@
             <div class="controls">
               <div id="dashboard-controls-tab1">
                 <pre><code class="language-javascript">
-                  const canvas = document.querySelector('canvas');
-                  const c = canvas.getContext('2d');
-                  const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
-                  
-                  function randomIntFromRange(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1) + min);
+                  //Get Canvas from DOM
+                  const canvas = document.querySelector('#canvas-3') as HTMLCanvasElement;
+                  const c = canvas.getContext('2d') as CanvasRenderingContext2D;
+                  canvas.height = canvas.width
+                  const {width, height} = canvas;
+                  //Create a ball object
+                  const ball = {
+                      pos:{
+                          x:width/2,
+                          y:height/2
+                      },
+                      vel:{
+                          x:0,
+                          y:0
+                      },
+                      acc:{
+                          x:0,
+                          y:0
+                      },
+                      radius:10,
+                      color:'red',
                   }
-                  
-                  function randomColor(colors) {
-                    return colors[Math.floor(Math.random() * colors.length)];
+                  const gravity = 0.5;
+                  //Create an animation loop
+                  function animate(){
+                      //Clear the canvas
+                      c.clearRect(0, 0, width, height);
+                      //Update the ball's position
+                      ball.vel.x += ball.acc.x;
+                      ball.vel.y += ball.acc.y;
+                      ball.pos.x += ball.vel.x;
+                      ball.pos.y += ball.vel.y;
+              
+                      //Apply gravity as an acceleration
+                      ball.acc.y = gravity;
+              
+                      //Draw the ball
+                      c.arc(ball.pos.x, ball.pos.y, ball.radius, 0, Math.PI * 2, false);
+                      c.fillStyle = ball.color;
+                      c.fill();
+              
+                      //Request the next frame
+                      requestAnimationFrame(animate);
                   }
-
+                  animate();
+              
                 </code></pre>
               </div>
               <div id="dashboard-controls-tab2" class="dis-off">
