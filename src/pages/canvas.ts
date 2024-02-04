@@ -8,6 +8,7 @@ const dashboard1 = new Dashboard({
     header_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-header-tab${i}`) as HTMLElement),
     preview_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-preview-tab${i}`) as HTMLElement),
     control_tabs:[1,2,3].map((i:number)=>document.querySelector(`#dashboard-controls-tab${i}`) as HTMLElement),
+    optional_callbacks:[displayFallingBalls,displayBrownianMotion,displayGravitationalAttraction]
 })
 
 function drawArc(){
@@ -90,10 +91,10 @@ function displayFallingBalls(){
     }
     const gravity = 0.5;
     //Create an animation loop
+    let animation_by_id = 0;
     function animate(){
         //Clear the canvas
         c.clearRect(0, 0, width, height);
-        console.log("")
         //Update the ball's position
         ball.vel.x += ball.acc.x;
         ball.vel.y += ball.acc.y;
@@ -109,8 +110,67 @@ function displayFallingBalls(){
         c.fill();
 
         //Request the next frame
-        requestAnimationFrame(animate);
+        animation_by_id = requestAnimationFrame(animate);
     }
-    animate();
+    function stopAnimation(){
+        cancelAnimationFrame(animation_by_id)
+    }
+    return({
+        start:animate,
+        stop:stopAnimation
+    })
+}
+function displayBrownianMotion(){
+    const canvas = document.querySelector('#canvas-4') as HTMLCanvasElement;
+    const c = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const {width, height} = canvas;
+    const balls:any[] = []
+    for(let i=0;i<20;i++){
+        const ball = {
+            pos:{x:Math.floor(Math.random()*width),y:Math.floor(Math.random()*height)},
+            vel:{x:Math.floor((Math.random()-0.5)*2),y:Math.floor((Math.random()-0.5)*2)},
+            acc:{x:0,y:0},
+            radius:Math.random()*10,
+            color:['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'][Math.floor(Math.random()*4)]
+        }
+        balls.push(ball)
+    }
+    function updatePosition(b:any){
+        b.vel.x += b.acc.x;
+        b.vel.y += b.acc.y;
+        b.pos.x += b.vel.x;
+        b.pos.y += b.vel.y;
+    }
+    function drawBall(b:any){
+        c.beginPath();
+        c.fillStyle = b.color;
+        c.arc(b.pos.x, b.pos.y, b.radius, 0, Math.PI*2, false);
+        c.fill();
+        c.closePath();
+    }
+    let animation_by_id = 0;
+    function animate(){
+        c.clearRect(0,0,width,height);
+        for(let i=0;i<balls.length;i++){
+            updatePosition(balls[i])
+            drawBall(balls[i]);
+        }
+        animation_by_id = requestAnimationFrame(animate);
+    }
+    function stopAnimation(){
+        cancelAnimationFrame(animation_by_id)
+    }
+    return({
+        start:animate,
+        stop:stopAnimation
+    })
+}
+function displayGravitationalAttraction(){
+    function animate(){}
+    function stopAnimation(){}
+    return({
+        start:animate,
+        stoip:stopAnimation
+    })
+}
 
-}displayFallingBalls();
